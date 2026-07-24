@@ -822,7 +822,6 @@ void CPlugin::RenderFrame(int bRedraw)
 	    }
 
 	    // handle hard cuts here (just after new sound analysis)
-	    static float m_fHardCutThresh;
 	    if (GetFrame() == 0)
 		    m_fHardCutThresh = m_fHardCutLoudnessThresh*2.0f;
 	    if (GetFps() > 1.0f && !m_bHardCutsDisabled && !m_bPresetLockedByUser && !m_bPresetLockedByCode)
@@ -830,8 +829,10 @@ void CPlugin::RenderFrame(int bRedraw)
 		    if (mysound.imm_rel[0] + mysound.imm_rel[1] + mysound.imm_rel[2] > m_fHardCutThresh*3.0f)
 		    {
                 if (m_nLoadingPreset==0) // don't start a load if one is already underway!
+                {
 		            LoadRandomPreset(0.0f);
-			    m_fHardCutThresh *= 2.0f;
+			        m_fHardCutThresh *= 2.0f;
+                }
 		    }
 		    else
 		    {

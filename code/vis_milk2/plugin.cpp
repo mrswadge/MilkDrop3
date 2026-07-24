@@ -944,6 +944,7 @@ void CPlugin::MyPreInitialize()
 	m_bHardCutsDisabled			= true;
 	m_fHardCutLoudnessThresh	= 2.5f;
 	m_fHardCutHalflife			= 60.0f;
+	m_fHardCutThresh			= m_fHardCutLoudnessThresh * 2.0f;
 	//m_nWidth			= 1024;
 	//m_nHeight			= 768;
 	//m_nDispBits		= 16;
